@@ -1,4 +1,4 @@
 ---
 - git: dest=/opt/rbenv repo=https://github.com/sstephenson/rbenv depth=1
 - git: dest=/opt/rbenv/plugins/ruby-build repo=https://github.com/sstephenson/ruby-build depth=1
-- template: src=profile-rbenv.sh dest=/etc/profile.d/zz-profile-rbenv.sh owner=root group=root mode=0644
+- template: src=rbenv.sh dest=/etc/profile.d/rbenv.sh owner=root group=root mode=0644
