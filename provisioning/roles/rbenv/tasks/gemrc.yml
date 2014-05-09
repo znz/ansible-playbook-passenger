@@ -1,0 +1,2 @@
+---
+- template: src=gemrc dest=/etc/gemrc owner=root group=root mode=0644
