@@ -10,3 +10,10 @@
    export CONFIGURE_OPTS="--disable-install-doc"
    rbenv install {{ ruby_version }}
    rbenv global {{ ruby_version }}
+- name: install bundler
+  shell: |
+   creates={{ rbenv_root }}/versions/{{ ruby_version }}/bin/bundle
+   set -e
+   . /etc/profile.d/rbenv.sh
+   gem install bundler
+   rbenv rehash
