@@ -1,8 +1,8 @@
 # prefer a user rbenv over a system wide install
 if [ -s "${HOME}/.rbenv/bin" ]; then
   rbenv_root="${HOME}/.rbenv"
-elif [ -s "/opt/rbenv" ]; then
-  rbenv_root="/opt/rbenv"
+elif [ -s "{{ rbenv_root }}" ]; then
+  rbenv_root="{{ rbenv_root }}"
   export RBENV_ROOT="$rbenv_root"
 fi
 
