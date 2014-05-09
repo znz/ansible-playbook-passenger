@@ -1,5 +1,6 @@
 ---
 - name: passenger installed version
+  changed_when: no
   ignore_errors: yes
   register: passenger_installed_version
   shell: |
@@ -8,6 +9,7 @@
    gem list passenger | awk '$1=="passenger"{gsub("[(,)]","");print $2}'
 
 - name: passenger outdated
+  changed_when: no
   ignore_errors: yes
   register: passenger_outdated
   when: passenger_installed_version.stdout != ""
@@ -16,19 +18,22 @@
    . /etc/profile.d/rbenv.sh
    gem outdated | egrep '^passenger ' || :
 
-- name: install passenger
-  when: passenger_installed_version.stdout == "" or passenger_outdated != ""
+- name: install or update passenger
+  when: passenger_installed_version.stdout == "" or passenger_outdated.stdout != ""
+  register: install_or_update_passenger
+  changed_when: '"Nothing to update" not in install_or_update_passenger.stdout'
   shell: |
    set -e
    . /etc/profile.d/rbenv.sh
    if test -z "{{ passenger_installed_version.stdout }}"; then
      gem install passenger
+     rbenv rehash
    else
      gem update passenger
    fi
-   rbenv rehash
 
 - name: passenger apache2 module path
+  changed_when: no
   ignore_errors: yes
   register: passenger_apache2_module_path
   shell: |
@@ -36,16 +41,22 @@
    . /etc/profile.d/rbenv.sh
    passenger-install-apache2-module --snippet | awk '/LoadModule/{print $NF}'
 
-- name: install passenger install apache2 module
+- name: install passenger apache2 module
+  register: passenger_install_apache2_module
   shell: |
-   create={{ passenger_apache2_module_path }}
+   creates={{ passenger_apache2_module_path.stdout }}
+   if test -f {{ passenger_apache2_module_path.stdout }}; then
+     exit
+   fi
    set -e
    . /etc/profile.d/rbenv.sh
    passenger-install-apache2-module --auto
 
 - name: create apache2 passenger.conf
+  when: passenger_install_apache2_module|changed
   shell: |
-   create=/etc/apache2/conf.d/passenger.conf
+   set -e
+   . /etc/profile.d/rbenv.sh
    {
      echo PassengerMaxPoolSize 3
      echo PassengerPoolIdleTime 300
