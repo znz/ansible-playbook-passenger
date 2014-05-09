@@ -23,5 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #ansible.playbook = "provisioning/playbook.yml"
     ansible.playbook = "provisioning/site.yml"
     ansible.verbose = "v"
+    #ansible.tags = "apt"
   end
 end
