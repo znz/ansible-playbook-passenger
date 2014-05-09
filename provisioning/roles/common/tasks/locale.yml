@@ -1,5 +1,3 @@
 ---
 - lineinfile: dest=/etc/default/locale regexp="^(LC_ALL=.*)" line='LC_ALL=ja_JP.UTF-8' backrefs=yes
-  tags: locale
 - apt: name=language-pack-ja
-  tags: locale
