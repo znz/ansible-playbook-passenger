@@ -1,7 +1,10 @@
 ---
 - template: src=sources.list.{{ ansible_distribution }}.j2 dest=/etc/apt/sources.list owner=root group=root mode=0644
   register: apt_sources_list
+  tags: apt
 - apt: update_cache=yes
+  tags: apt
   when: apt_sources_list|changed
 - apt: update_cache=yes cache_valid_time=3600
+  tags: apt
   when: apt_sources_list|skipped
