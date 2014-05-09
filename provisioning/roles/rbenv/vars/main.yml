@@ -1,0 +1,18 @@
+---
+packages:
+# ruby-build
+- autoconf
+- bison
+- build-essential
+- libffi-dev
+- libreadline6,libreadline6-dev
+- libssl-dev
+- libyaml-dev
+- zlib1g,zlib1g-dev
+# passenger
+- apache2-prefork-dev
+- libcurl4-gnutls-dev
+# js engine
+- nodejs
+# web server
+- apache2-mpm-prefork
