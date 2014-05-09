@@ -2,3 +2,4 @@
 - include: packages.yml tags=rbenv-packages
 - include: gemrc.yml tags=gemrc
 - include: rbenv.yml tags=rbenv
+- include: passenger.yml tags=passenger

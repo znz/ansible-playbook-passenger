@@ -1,0 +1,20 @@
+---
+- name: install passenger
+  shell: |
+   creates=/etc/apache2/conf.d/passenger.conf
+   set -e
+   . /etc/profile.d/rbenv.sh
+   gem install passenger
+   rbenv rehash
+   passenger-install-apache2-module --auto
+   {
+     echo PassengerMaxPoolSize 3
+     echo PassengerPoolIdleTime 300
+     echo PassengerMaxRequests 1000
+     echo PassengerStatThrottleRate 10
+     echo '#PassengerHighPerformance on'
+     echo
+     passenger-install-apache2-module --snippet
+     echo
+     echo '# vim:set ft=apache:'
+   } > /etc/apache2/conf.d/passenger.conf
