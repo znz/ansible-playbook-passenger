@@ -1,0 +1,3 @@
+---
+- apt: name={{ common_packages | join(",") }}
+- apt: name={{ purge_packages | join(",") }} purge=yes state=absent
