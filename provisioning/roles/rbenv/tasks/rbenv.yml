@@ -10,6 +10,8 @@
    export CONFIGURE_OPTS="--disable-install-doc"
    rbenv install {{ ruby_version }}
    rbenv global {{ ruby_version }}
+- file: state=directory path={{ rbenv_root }}/versions/{{ ruby_version }}/etc owner=root group=root mode=0755
+- template: src=gemrc dest={{ rbenv_root }}/versions/{{ ruby_version }}/etc/gemrc owner=root group=root mode=0644
 - name: install bundler
   shell: |
    creates={{ rbenv_root }}/versions/{{ ruby_version }}/bin/bundle
