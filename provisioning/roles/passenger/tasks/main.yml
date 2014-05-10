@@ -1,4 +1,4 @@
 ---
-- include: packages.yml tags=rbenv-packages
+- include: packages.yml tags=passenger-packages
 - include: rbenv.yml tags=rbenv
 - include: passenger.yml tags=passenger
