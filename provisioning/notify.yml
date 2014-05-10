@@ -1,0 +1,8 @@
+---
+- hosts: all
+  sudo: yes
+  gather_facts: no
+  tasks:
+  - local_action: osx_say msg="{{inventory_hostname}} is all done" voice=Zarvox
+    ignore_errors: yes
+    sudo: no
