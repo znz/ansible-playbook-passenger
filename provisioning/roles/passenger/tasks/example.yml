@@ -1,0 +1,8 @@
+---
+- file: state=directory path={{ example_app_root }} owner={{ example_app_owner }} group={{ example_app_group }} mode=0755
+- file: state=directory path={{ example_app_root }}/public owner={{ example_app_owner }} group={{ example_app_group }} mode=0755
+- file: state=directory path={{ example_app_root }}/tmp owner={{ example_app_owner }} group={{ example_app_group }} mode=0755
+- template: src=config.ru dest={{ example_app_root }}/config.ru owner={{ example_app_owner }} group={{ example_app_group }} mode=0644
+- template: src=example-site.j2 dest=/etc/apache2/sites-available/example owner=root group=root mode=0644
+- command: a2ensite example creates=/etc/apache2/sites-enabled/example
+  notify: restart apache2
