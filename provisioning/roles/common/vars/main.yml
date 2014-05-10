@@ -1,5 +1,6 @@
 ---
 apt_ubuntu_uri: "http://ftp.riken.jp/Linux/ubuntu/"
+default_locale: "ja_JP.utf8"
 apt_ubuntu_components:
 - main
 - restricted

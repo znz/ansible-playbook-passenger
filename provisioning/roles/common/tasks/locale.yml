@@ -1,4 +1,4 @@
 ---
-- lineinfile: dest=/etc/default/locale regexp="^(LC_ALL=.*)" line='LC_ALL=ja_JP.UTF-8' backrefs=yes
+- template: src=default-locale.j2 dest=/etc/default/locale owner=root group=root mode=0644
 - apt: name=language-pack-ja
   when: ansible_distribution == "Ubuntu"
