@@ -1,5 +1,5 @@
 ---
-apt_ubuntu_uri: "http://ftp.riken.jp/Linux/ubuntu/"
+apt_ubuntu_uri: "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
 default_locale: "ja_JP.utf8"
 apt_ubuntu_components:
 - main
