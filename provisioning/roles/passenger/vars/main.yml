@@ -1,22 +1,9 @@
 ---
-rbenv_root: "/opt/rbenv"
-ruby_version: "2.1.2"
-
 example_app_root: "/srv/www/example/app"
 example_app_owner: 1000
 example_app_group: 1000
 
 packages:
-- git
-# ruby-build
-- autoconf
-- bison
-- build-essential
-- libffi-dev
-- libreadline6,libreadline6-dev
-- libssl-dev
-- libyaml-dev
-- zlib1g,zlib1g-dev
 # passenger
 - apache2-prefork-dev
 - libcurl4-gnutls-dev

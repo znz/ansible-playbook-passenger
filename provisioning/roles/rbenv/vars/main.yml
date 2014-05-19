@@ -1,0 +1,14 @@
+---
+rbenv_root: "/opt/rbenv"
+ruby_version: "2.1.2"
+
+packages:
+- git
+- autoconf
+- bison
+- build-essential
+- libffi-dev
+- libreadline6,libreadline6-dev
+- libssl-dev
+- libyaml-dev
+- zlib1g,zlib1g-dev
