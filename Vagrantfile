@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ENV["ANSIBLE_COW_SELECTION"] = "random"
+    ENV["ANSIBLE_COW_SELECTION"] ||= "random"
     #ansible.playbook = "provisioning/playbook.yml"
     ansible.playbook = "provisioning/site.yml"
     ansible.verbose = "v"
