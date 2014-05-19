@@ -3,7 +3,7 @@ example_app_root: "/srv/www/example/app"
 example_app_owner: 1000
 example_app_group: 1000
 
-packages:
+passenger_packages:
 # passenger
 - apache2-prefork-dev
 - libcurl4-gnutls-dev

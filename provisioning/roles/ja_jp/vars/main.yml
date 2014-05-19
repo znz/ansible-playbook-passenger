@@ -6,13 +6,11 @@ apt_ubuntu_components:
 - restricted
 - universe
 - multiverse
-common_packages:
-- git
-- vim
-# ja
+ja_packages:
 - lv
 - nkf
 - w3m
 - curl
+- vim
 purge_packages:
 - nano

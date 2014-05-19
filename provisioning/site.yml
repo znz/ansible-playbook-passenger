@@ -1,4 +1,4 @@
 ---
-- include: common.yml
+- include: ja_jp.yml
 - include: passenger.yml
 - include: notify.yml

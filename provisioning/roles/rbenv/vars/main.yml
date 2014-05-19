@@ -2,7 +2,7 @@
 rbenv_root: "/opt/rbenv"
 ruby_version: "2.1.2"
 
-packages:
+rbenv_packages:
 - git
 - autoconf
 - bison

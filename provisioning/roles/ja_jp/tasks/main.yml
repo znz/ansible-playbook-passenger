@@ -1,4 +1,4 @@
 ---
 - include: apt.yml tags=apt
 - include: locale.yml tags=locale
-- include: common-packages.yml tags=common-packages
+- include: packages.yml tags=ja-packages

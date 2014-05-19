@@ -1,2 +1,2 @@
 ---
-- apt: name={{ packages | join(",") }}
+- apt: name={{ rbenv_packages | join(",") }}

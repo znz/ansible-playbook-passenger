@@ -1,2 +1,2 @@
 ---
-- apt: name={{ packages | join(",") }}
+- apt: name={{ passenger_packages | join(",") }}
