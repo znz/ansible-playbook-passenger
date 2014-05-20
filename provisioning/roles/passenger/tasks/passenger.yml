@@ -1,36 +1,6 @@
 ---
-- name: passenger installed version
-  changed_when: no
-  ignore_errors: yes
-  register: passenger_installed_version
-  shell: |
-   set -e
-   . /etc/profile.d/rbenv.sh
-   gem list passenger | awk '$1=="passenger"{gsub("[(,)]","");print $2}'
-
-- name: passenger outdated
-  changed_when: no
-  ignore_errors: yes
-  register: passenger_outdated
-  when: passenger_installed_version.stdout != ""
-  shell: |
-   set -e
-   . /etc/profile.d/rbenv.sh
-   gem outdated | egrep '^passenger ' || :
-
-- name: install or update passenger
-  when: passenger_installed_version.stdout == "" or passenger_outdated.stdout != ""
-  register: install_or_update_passenger
-  changed_when: '"Nothing to update" not in install_or_update_passenger.stdout'
-  shell: |
-   set -e
-   . /etc/profile.d/rbenv.sh
-   if test -z "{{ passenger_installed_version.stdout }}"; then
-     gem install passenger
-     rbenv rehash
-   else
-     gem update passenger
-   fi
+- gem: name=passenger state=latest user_install=no executable={{ rbenv_root }}/shims/gem
+  register: passenger
 
 - name: passenger apache2 module path
   changed_when: no
