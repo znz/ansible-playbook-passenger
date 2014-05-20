@@ -1,0 +1,2 @@
+---
+- copy: src="{{ lookup('env', 'HOME') + '/.netrc' }}" dest="/home/vagrant/.netrc" owner=vagrant group=vagrant mode=600 backup=yes
