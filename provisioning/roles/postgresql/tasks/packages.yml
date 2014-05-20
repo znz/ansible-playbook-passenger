@@ -1,0 +1,3 @@
+---
+- apt: pkg=postgresql-9.3
+- apt: pkg=python-psycopg2

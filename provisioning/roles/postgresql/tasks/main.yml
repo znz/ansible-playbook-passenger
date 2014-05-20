@@ -1,0 +1,5 @@
+---
+- include: pgdg.yml tags=postgresql-pgdg
+  when: ansible_distribution_release == "precise"
+- include: packages.yml tags=postgresql-packages
+- include: users.yml tags=postgresql-users

@@ -1,0 +1,6 @@
+---
+postgresql_users:
+- name: rails
+  password: secret
+- name: vagrant
+  password: vagrant

@@ -1,0 +1,12 @@
+---
+- name: drop postgresql users
+  postgresql_user: name={{ item.name }} state=absent
+  sudo: yes
+  sudo_user: postgres
+  with_items: postgresql_users
+  when: no
+- name: create postgresql users
+  postgresql_user: name={{ item.name }} password={{ item.password }} role_attr_flags=CREATEDB,NOSUPERUSER
+  sudo: yes
+  sudo_user: postgres
+  with_items: postgresql_users
