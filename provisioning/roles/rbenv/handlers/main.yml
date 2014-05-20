@@ -1,0 +1,6 @@
+---
+- name: rbenv rehash
+  shell: |
+    set -e
+    . /etc/profile.d/rbenv.sh
+    rbenv rehash
