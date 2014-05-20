@@ -1,4 +1,5 @@
 ---
+- include: nodejs-ppa.yml tags=passenger-nodejs
 - include: packages.yml tags=passenger-packages
 - include: passenger.yml tags=passenger
 - include: example.yml tags=passenger-example
