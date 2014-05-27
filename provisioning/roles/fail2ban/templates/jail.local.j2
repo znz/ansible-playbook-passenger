@@ -1,0 +1,10 @@
+[DEFAULT]
+ignoreip = 127.0.0.1/8 {{ ansible_all_ipv4_addresses | join(" ") }}
+
+[apache-myadmin]
+enabled  = true
+filter   = apache-myadmin
+port     = http,https
+logpath  = /var/log/apache2/error.log
+maxretry = 2
+bantime  = 84600

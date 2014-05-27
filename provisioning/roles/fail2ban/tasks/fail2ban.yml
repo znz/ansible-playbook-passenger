@@ -1,0 +1,8 @@
+---
+- apt: pkg=fail2ban
+- copy: src=apache-myadmin.conf dest=/etc/fail2ban/filter.d/apache-myadmin.conf
+  notify:
+  - reload fail2ban
+- template: src=jail.local.j2 dest=/etc/fail2ban/jail.local
+  notify:
+  - reload fail2ban
